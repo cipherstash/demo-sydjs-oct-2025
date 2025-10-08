@@ -1,0 +1,388 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "version": 1,
+    "install": {
+      "_1password": {
+        "pkg-path": "_1password"
+      },
+      "nodejs": {
+        "pkg-path": "nodejs_24",
+        "version": "24.7.0"
+      },
+      "pnpm": {
+        "pkg-path": "pnpm",
+        "pkg-group": "pnpm",
+        "version": "10.14.0"
+      }
+    },
+    "vars": {
+      "ROOT_DIR": "$(git rev-parse --show-toplevel)"
+    },
+    "hook": {
+      "on-activate": "  echo -e \"📦 Installing dependencies...\n\"\n  pnpm install --frozen-lockfile\n\n  echo -e \"\n📝 Exporting NODE_EXTRA_CA_CERTS...\"\n  export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/flox-ca-bundle.crt\n\n  echo -e \"\n✅ Done!\"\n\n  echo -e \"\n🚀 Start demoing CipherStash:\"\n  echo -e \"\"\n  echo -e \"🔑 The 'load-env' command loads all environment variables for this project\"\n  echo -e \"   using 1Password CLI integration.\"\n  echo -e \"\"\n  echo -e \"📋 Prerequisites:\"\n  echo -e \"   ✓ 1Password Desktop application installed\"\n  echo -e \"   ✓ Authenticated with 1Password CLI: run 'op signin'\"\n  echo -e \"\"\n  echo -e \"⚠️  Important: If you haven't signed in to 1Password CLI,\"\n  echo -e \"   'load-env' will not work and you'll see authentication errors.\"\n  echo -e \"\"\n  echo -e \"💡 Quick setup:\"\n  echo -e \"   1. Install 1Password Desktop from https://1password.com\"\n  echo -e \"   2. Run: op signin\"\n  echo -e \"   3. Run: load-env\"\n  echo -e \"\"\n  echo -e \"🛠️  Running the demos:\"\n  echo -e \"   1. Run: pnpm run dynamo:example\"\n  echo -e \"   2. Run: pnpm run postgres:proxy:query\"\n  echo -e \"   3. Run: pnpm run postgres:protect:query\"\n  echo -e \"   4. Run: pnpm run postgres:protect:insert\"\n  echo -e \"   5. Run: pnpm run postgres:proxy:insert-user\"\n  echo -e \"   6. Run: pnpm run postgres:protect:proxy-encrypt-config\"\n  echo -e \"\"\n"
+    },
+    "profile": {
+      "common": "  alias load-env='echo -e \"\\n🔑 Loading local environment variables from the 1Password...\" && op inject --force --in-file ${ROOT_DIR}/.env.local.tpl --out-file ${ROOT_DIR}/.env'\n"
+    },
+    "options": {}
+  },
+  "packages": [
+    {
+      "attr_path": "pnpm",
+      "broken": false,
+      "derivation": "/nix/store/mbnsjzlan6bxpyfq7l5wm1snm4fynj7g-pnpm-10.14.0.drv",
+      "description": "Fast, disk space efficient package manager for JavaScript",
+      "install_id": "pnpm",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=20075955deac2583bb12f07151c2df830ef346b4",
+      "name": "pnpm-10.14.0",
+      "pname": "pnpm",
+      "rev": "20075955deac2583bb12f07151c2df830ef346b4",
+      "rev_count": 846535,
+      "rev_date": "2025-08-19T15:00:17Z",
+      "scrape_date": "2025-08-24T15:39:04.362677Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "10.14.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/zbrkyacg6llvr23i9jymcqpdply66wcb-pnpm-10.14.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "pnpm",
+      "priority": 5
+    },
+    {
+      "attr_path": "pnpm",
+      "broken": false,
+      "derivation": "/nix/store/d272dgm94ngv832j59klzn98j2xkg7ym-pnpm-10.14.0.drv",
+      "description": "Fast, disk space efficient package manager for JavaScript",
+      "install_id": "pnpm",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=20075955deac2583bb12f07151c2df830ef346b4",
+      "name": "pnpm-10.14.0",
+      "pname": "pnpm",
+      "rev": "20075955deac2583bb12f07151c2df830ef346b4",
+      "rev_count": 846535,
+      "rev_date": "2025-08-19T15:00:17Z",
+      "scrape_date": "2025-08-24T16:05:52.135478Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "10.14.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/cfpp6ffy67vvzz1l6vqddkxzffs2m790-pnpm-10.14.0"
+      },
+      "system": "aarch64-linux",
+      "group": "pnpm",
+      "priority": 5
+    },
+    {
+      "attr_path": "pnpm",
+      "broken": false,
+      "derivation": "/nix/store/mzms4q8gavdnl048mb4ykgp231zf9n79-pnpm-10.14.0.drv",
+      "description": "Fast, disk space efficient package manager for JavaScript",
+      "install_id": "pnpm",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=20075955deac2583bb12f07151c2df830ef346b4",
+      "name": "pnpm-10.14.0",
+      "pname": "pnpm",
+      "rev": "20075955deac2583bb12f07151c2df830ef346b4",
+      "rev_count": 846535,
+      "rev_date": "2025-08-19T15:00:17Z",
+      "scrape_date": "2025-08-24T16:29:36.471290Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "10.14.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/iryjb73pn84bczcr751608rjbpbzm721-pnpm-10.14.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "pnpm",
+      "priority": 5
+    },
+    {
+      "attr_path": "pnpm",
+      "broken": false,
+      "derivation": "/nix/store/d5iq575j1lwp66lmr2pgx8rdk7d8cpww-pnpm-10.14.0.drv",
+      "description": "Fast, disk space efficient package manager for JavaScript",
+      "install_id": "pnpm",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=20075955deac2583bb12f07151c2df830ef346b4",
+      "name": "pnpm-10.14.0",
+      "pname": "pnpm",
+      "rev": "20075955deac2583bb12f07151c2df830ef346b4",
+      "rev_count": 846535,
+      "rev_date": "2025-08-19T15:00:17Z",
+      "scrape_date": "2025-08-24T16:57:56.781753Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "10.14.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/q4cljfi7la5sbb75vb2kkgvbg2qwgz2x-pnpm-10.14.0"
+      },
+      "system": "x86_64-linux",
+      "group": "pnpm",
+      "priority": 5
+    },
+    {
+      "attr_path": "_1password",
+      "broken": false,
+      "derivation": "/nix/store/9dqcz84m3hihllybprqnv23mznddwqia-1password-cli-2.32.0.drv",
+      "description": "1Password command-line tool",
+      "install_id": "_1password",
+      "license": "Unfree",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "name": "1password-cli-2.32.0",
+      "pname": "_1password",
+      "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "rev_count": 861038,
+      "rev_date": "2025-09-13T06:43:22Z",
+      "scrape_date": "2025-09-15T02:00:42.034521Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "2.32.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/07fk1ndq76bb60gwq2q8wrc54giq613r-1password-cli-2.32.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "_1password",
+      "broken": false,
+      "derivation": "/nix/store/4sc3jz7dmj4dry0bz2l3pmpbc9w1qip7-1password-cli-2.32.0.drv",
+      "description": "1Password command-line tool",
+      "install_id": "_1password",
+      "license": "Unfree",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "name": "1password-cli-2.32.0",
+      "pname": "_1password",
+      "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "rev_count": 861038,
+      "rev_date": "2025-09-13T06:43:22Z",
+      "scrape_date": "2025-09-15T02:29:39.864898Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "2.32.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/i4idjk7w45aliyvrhc1876b9gmspybbh-1password-cli-2.32.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "_1password",
+      "broken": false,
+      "derivation": "/nix/store/z80b7l78qpbdh1bj1gkl33958ik2fvrg-1password-cli-2.32.0.drv",
+      "description": "1Password command-line tool",
+      "install_id": "_1password",
+      "license": "Unfree",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "name": "1password-cli-2.32.0",
+      "pname": "_1password",
+      "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "rev_count": 861038,
+      "rev_date": "2025-09-13T06:43:22Z",
+      "scrape_date": "2025-09-15T02:56:35.449998Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "2.32.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/b97ifk7jcrqhyrl4lcak429djljjbwh6-1password-cli-2.32.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "_1password",
+      "broken": false,
+      "derivation": "/nix/store/0sq79kp3ip809j4d03gbpj7rlcqjq6xk-1password-cli-2.32.0.drv",
+      "description": "1Password command-line tool",
+      "install_id": "_1password",
+      "license": "Unfree",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "name": "1password-cli-2.32.0",
+      "pname": "_1password",
+      "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "rev_count": 861038,
+      "rev_date": "2025-09-13T06:43:22Z",
+      "scrape_date": "2025-09-15T03:26:55.936237Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": true,
+      "version": "2.32.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/9l5a0zr1v5jwc2k1w19lqa1mppjhk2gk-1password-cli-2.32.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nodejs_24",
+      "broken": false,
+      "derivation": "/nix/store/gdh9h74qhypsxia7i15wapfqj1zb4zcc-nodejs-24.7.0.drv",
+      "description": "Event-driven I/O framework for the V8 JavaScript engine",
+      "install_id": "nodejs",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "name": "nodejs-24.7.0",
+      "pname": "nodejs_24",
+      "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "rev_count": 861038,
+      "rev_date": "2025-09-13T06:43:22Z",
+      "scrape_date": "2025-09-15T02:01:05.831557Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "24.7.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/y2nlpdynshmy7d0vdlhifpmla2ws9x38-nodejs-24.7.0-dev",
+        "libv8": "/nix/store/l86n3d5mgl4ja3q5gxhcjaarh7rghl92-nodejs-24.7.0-libv8",
+        "out": "/nix/store/jkg9aq9xnkclliarzmqcw6ck2kyivydq-nodejs-24.7.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nodejs_24",
+      "broken": false,
+      "derivation": "/nix/store/k0d1hlrc1jy62g0x3lq93xkszi03wcbs-nodejs-24.7.0.drv",
+      "description": "Event-driven I/O framework for the V8 JavaScript engine",
+      "install_id": "nodejs",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "name": "nodejs-24.7.0",
+      "pname": "nodejs_24",
+      "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "rev_count": 861038,
+      "rev_date": "2025-09-13T06:43:22Z",
+      "scrape_date": "2025-09-15T02:30:18.602129Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "24.7.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/zal4m0gdks2irdx9v0n68dm9lgqdnick-nodejs-24.7.0-dev",
+        "libv8": "/nix/store/p5kprhdlf1ak74bbbdwdv9vihjpmg7dz-nodejs-24.7.0-libv8",
+        "out": "/nix/store/agx00dqcd09bxlsmq1z88zy5w9p8qqmi-nodejs-24.7.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nodejs_24",
+      "broken": false,
+      "derivation": "/nix/store/1yrpjfkxyyf30pdbsmcj7gvsvmijam47-nodejs-24.7.0.drv",
+      "description": "Event-driven I/O framework for the V8 JavaScript engine",
+      "install_id": "nodejs",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "name": "nodejs-24.7.0",
+      "pname": "nodejs_24",
+      "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "rev_count": 861038,
+      "rev_date": "2025-09-13T06:43:22Z",
+      "scrape_date": "2025-09-15T02:56:58.360472Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "24.7.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/6brk3ah4lb5544gpl6b7qdw9m1x3zq0d-nodejs-24.7.0-dev",
+        "libv8": "/nix/store/k4ad7cnm3rx90mffl1xz6jar8dpnybs5-nodejs-24.7.0-libv8",
+        "out": "/nix/store/6lrbpb5ayzdcsi0lif59wm7hc1k8dw2w-nodejs-24.7.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "nodejs_24",
+      "broken": false,
+      "derivation": "/nix/store/bh56fg5vqbbzapp0ciyzvhna90fw41pc-nodejs-24.7.0.drv",
+      "description": "Event-driven I/O framework for the V8 JavaScript engine",
+      "install_id": "nodejs",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "name": "nodejs-24.7.0",
+      "pname": "nodejs_24",
+      "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+      "rev_count": 861038,
+      "rev_date": "2025-09-13T06:43:22Z",
+      "scrape_date": "2025-09-15T03:27:37.274335Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "24.7.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dev": "/nix/store/xvkj630rqnb4ayybn99zydvfr7djyys8-nodejs-24.7.0-dev",
+        "libv8": "/nix/store/fm3pafhp7gp32288j008kfqjv3hya8cq-nodejs-24.7.0-libv8",
+        "out": "/nix/store/cyj35hzfyzca9wsmp8ja720g2wfgck85-nodejs-24.7.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "cipherstash-demo",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dynamo:example": "tsx src/dynamo/index.ts",
+    "dynamo:setup-table": "tsx src/dynamo/setup-table.ts",
+    "dynamo:search-user": "tsx src/dynamo/search-user.ts",
+    "postgres:proxy:query": "tsx src/proxy/json/index.ts",
+    "postgres:proxy:setup-proxy-config": "tsx src/proxy/json/setup-proxy-config.ts",
+    "postgres:proxy:insert-user": "tsx src/proxy/json/insert-user.ts",
+    "postgres:protect:query": "tsx src/protect/index.ts",
+    "postgres:protect:insert": "tsx src/protect/insert.ts",
+    "postgres:protect:proxy-encrypt-config": "tsx src/protect/protect/proxy-encrypt-config.ts",
+    "postgres:protect:search": "tsx src/protect/search.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.7.0",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.896.0",
+    "@aws-sdk/lib-dynamodb": "^3.896.0",
+    "@cipherstash/protect": "^9.6.0",
+    "@cipherstash/protect-dynamodb": "^4.0.0",
+    "@cipherstash/schema": "^0.1.0",
+    "dotenv": "^17.2.2",
+    "drizzle-orm": "^0.44.6",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "@types/pg": "^8.15.5",
+    "drizzle-kit": "^0.31.5",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

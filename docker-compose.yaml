@@ -1,0 +1,67 @@
+services:
+  dynamo:
+    container_name: cipherstash-demo-dynamodb
+    image: amazon/dynamodb-local
+    networks:
+      - cipherstash
+    ports:
+      - "8000:8000"
+    volumes:
+      - dynamodata:/home/dynamodblocal
+    working_dir: /home/dynamodblocal
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ."
+
+  postgres:
+    image: postgres:latest
+    container_name: cipherstash-demo-postgres
+    environment:
+      PGPORT: 5432
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      PGUSER: "postgres"
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    networks:
+      - cipherstash
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          cpus: "${CPU_LIMIT:-2}"
+          memory: 2048mb
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+  proxy:
+    image: cipherstash/proxy:latest
+    pull_policy: always
+    container_name: cipherstash-demo-proxy
+    ports:
+      - 6432:6432
+      - 9930:9930
+    env_file:
+      - .env
+    environment:
+      - CS_DATABASE__NAME=postgres
+      - CS_DATABASE__USERNAME=postgres
+      - CS_DATABASE__PASSWORD=password
+      - CS_DATABASE__HOST=postgres
+      - CS_DATABASE__PORT=5432
+      - CS_PROMETHEUS__ENABLED=true
+      - CS_DATABASE__INSTALL_EQL=true
+    networks:
+      - cipherstash
+
+networks:
+  cipherstash:
+    name: cipherstash
+
+volumes:
+  dynamodata: {}
+  postgresdata: {}
