@@ -51,12 +51,12 @@ console.log('Results:', results)
 //   process.exit(0)
 // }
 
-// // Decrypt the results
-// const decrypted = await protectClient.bulkDecryptModels(results)
+// Decrypt the results
+const decrypted = await protectClient.bulkDecryptModels(results)
 
-// if (decrypted.failure) {
-//   throw new Error(decrypted.failure.message)
-// }
+if (decrypted.failure) {
+  throw new Error(decrypted.failure.message)
+}
 
-// console.log('\nDecrypted results:')
-// console.log(JSON.stringify(decrypted.data, null, 2))
+console.log('\nDecrypted results:')
+console.log(JSON.stringify(decrypted.data, null, 2))
