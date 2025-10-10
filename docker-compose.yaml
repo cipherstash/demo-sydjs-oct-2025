@@ -12,7 +12,7 @@ services:
     command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ."
 
   postgres:
-    image: postgres:latest
+    image: postgres:17.6
     container_name: cipherstash-demo-postgres
     environment:
       PGPORT: 5432
