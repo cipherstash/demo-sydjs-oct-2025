@@ -21,6 +21,7 @@ _1password.pkg-path = "_1password"
 pnpm.pkg-path = "pnpm"
 pnpm.version = "10.14.0"
 pnpm.pkg-group = "pnpm"
+postgresql_17.pkg-path = "postgresql_17"
 
 ## Environment Variables ---------------------------------------------
 ##  ... available for use in the activated environment
