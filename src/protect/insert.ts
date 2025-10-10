@@ -30,7 +30,10 @@ function parseCSV(content: string): Array<{ email: string; dob: string; salary: 
 
 // Process users data (either from CLI args or CSV file)
 async function processUsers(usersData: Array<{ email: string; dob: string; salary: string }>) {
-  const insertedIds = []
+  console.log(`Encrypting ${usersData.length} user(s)...`)
+  
+  // Encrypt all users first
+  const encryptedUsers = []
   
   for (const userData of usersData) {
     const user = {
@@ -42,25 +45,27 @@ async function processUsers(usersData: Array<{ email: string; dob: string; salar
     const encryptedUser = await protectClient.encryptModel(user, users)
     
     if (encryptedUser.failure) {
-      throw new Error(encryptedUser.failure.message)
+      throw new Error(`Failed to encrypt user ${userData.email}: ${encryptedUser.failure.message}`)
     }
     
-    console.log('Encrypted user:', encryptedUser.data)
-    
-    console.log('Inserting user into database...')
-    
-    const data = await db
-      .insert(usersTable)
-      .values({
-        encrypted_email: encryptedUser.data.encrypted_email,
-        encrypted_dob: encryptedUser.data.encrypted_dob,
-        encrypted_salary: encryptedUser.data.encrypted_salary,
-      })
-      .returning()
-    
-    console.log('Inserted user:', data[0].id)
-    insertedIds.push(data[0].id)
+    console.log(`Encrypted user: ${userData.email}`)
+    encryptedUsers.push({
+      encrypted_email: encryptedUser.data.encrypted_email,
+      encrypted_dob: encryptedUser.data.encrypted_dob,
+      encrypted_salary: encryptedUser.data.encrypted_salary,
+    })
   }
+  
+  // Perform bulk insert
+  console.log(`Performing bulk insert of ${encryptedUsers.length} user(s)...`)
+  
+  const insertedData = await db
+    .insert(usersTable)
+    .values(encryptedUsers)
+    .returning()
+  
+  const insertedIds = insertedData.map(row => row.id)
+  console.log(`Successfully inserted ${insertedIds.length} user(s) with IDs:`, insertedIds)
   
   return insertedIds
 }
