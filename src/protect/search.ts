@@ -2,7 +2,7 @@ import 'dotenv/config'
 import { db } from './db'
 import { usersTable } from './db/schema'
 import { protectClient, users } from './protect'
-import { eq } from 'drizzle-orm'
+import { eq, like } from 'drizzle-orm'
 
 if (process.argv.length < 3) {
   console.error('Usage: pnpm run postgres:protect:search <email>')
@@ -19,12 +19,12 @@ const searchTerm = await protectClient.createSearchTerms([
     value: searchEmail,
     column: users.encrypted_email,
     table: users,
-    // returnType: 'composite-literal',
+    returnType: 'composite-literal',
   },
 ])
 
-if (searchTerm.failure) {
-  throw new Error(searchTerm.failure.message)
+if (searchTerm.failure || !searchTerm.data[0]) {
+  throw new Error(searchTerm?.failure?.message || 'Failed to generate search term')
 }
 
 console.log('Search term:', searchTerm.data)
@@ -40,7 +40,8 @@ const results = await db
     encrypted_salary: usersTable.encrypted_salary,
   })
   .from(usersTable)
-  .where(eq(usersTable.encrypted_email, searchTerm.data[0]))
+  //.where(eq(usersTable.encrypted_email, searchTerm.data[0]))
+  .where(like(usersTable.encrypted_email, String(searchTerm.data[0])))
 
 console.log('Results:', results)
 
