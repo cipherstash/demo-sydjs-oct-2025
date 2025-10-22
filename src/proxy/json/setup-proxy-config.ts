@@ -22,8 +22,8 @@ async function connectToCipherStash() {
     // Check if users table exists
     console.log('Checking if users table exists...')
     const tableCheck = await client.query(`
-      SELECT table_name 
-      FROM information_schema.tables 
+      SELECT table_name
+      FROM information_schema.tables
       WHERE table_name = 'users' AND table_schema = 'public'
     `)
 
@@ -44,40 +44,40 @@ async function connectToCipherStash() {
       // The below can be uncommented if you want to add search configurations without the Protect SDK integration
 
       // Add search configurations for each encrypted column
-      // console.log('Adding search configurations...')
+      console.log('Adding search configurations...')
 
-      // await client.query(`SELECT eql_v2.add_search_config(
-      //   'users',
-      //   'encrypted_email',
-      //   'unique',
-      //   'text'
-      // );`)
-      // console.log('Added search config for encrypted_email')
+      await client.query(`SELECT eql_v2.add_search_config(
+        'users',
+        'encrypted_email',
+        'unique',
+        'text'
+      );`)
+      console.log('Added search config for encrypted_email')
 
-      // await client.query(`SELECT eql_v2.add_search_config(
-      //   'users',
-      //   'encrypted_dob',
-      //   'unique',
-      //   'text'
-      // );`)
-      // console.log('Added search config for encrypted_dob')
+      await client.query(`SELECT eql_v2.add_search_config(
+        'users',
+        'encrypted_dob',
+        'unique',
+        'text'
+      );`)
+      console.log('Added search config for encrypted_dob')
 
-      // await client.query(`SELECT eql_v2.add_search_config(
-      //   'users',
-      //   'encrypted_salary',
-      //   'unique',
-      //   'text'
-      // );`)
-      // console.log('Added search config for encrypted_salary')
+      await client.query(`SELECT eql_v2.add_search_config(
+        'users',
+        'encrypted_salary',
+        'unique',
+        'text'
+      );`)
+      console.log('Added search config for encrypted_salary')
 
-      // await client.query(`SELECT eql_v2.add_search_config(
-      //   'users',
-      //   'encrypted_jsonb',
-      //   'ste_vec',
-      //   'jsonb',
-      //   '{"prefix": "users/encrypted_jsonb"}'
-      // );`)
-      // console.log('Added search config for encrypted_jsonb')
+      await client.query(`SELECT eql_v2.add_search_config(
+        'users',
+        'encrypted_jsonb',
+        'ste_vec',
+        'jsonb',
+        '{"prefix": "users/encrypted_jsonb"}'
+      );`)
+      console.log('Added search config for encrypted_jsonb')
     } else {
       console.log(
         'The users table already exists, skipping the setup. You should be good to run the demo app now!',
