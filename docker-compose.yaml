@@ -24,8 +24,8 @@ services:
       - 5432:5432
     networks:
       - cipherstash
-    volumes:
-      - postgresdata:/var/lib/postgresql/data
+#    volumes:
+#      - postgresdata:/var/lib/postgresql/data
     deploy:
       resources:
         limits:
