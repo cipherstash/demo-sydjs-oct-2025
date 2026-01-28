@@ -173,7 +173,7 @@ pnpm run postgres:proxy:query
 
 #### Setup Proxy Encryption Configuration
 ```bash
-pnpm run postgres:protect:proxy-encrypt-config
+pnpm run postgres:protect:add-encryption-schema
 ```
 **What it does:**
 - Configures CipherStash Proxy for the Protect schema

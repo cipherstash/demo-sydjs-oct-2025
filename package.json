@@ -10,9 +10,9 @@
     "postgres:proxy:query": "tsx src/proxy/json/index.ts",
     "postgres:proxy:setup-proxy-config": "tsx src/proxy/json/setup-proxy-config.ts",
     "postgres:proxy:insert-user": "tsx src/proxy/json/insert-user.ts",
+    "postgres:protect:add-encryption-schema": "tsx src/protect/protect/proxy-encrypt-config.ts",
     "postgres:protect:list-users": "tsx src/protect/index.ts",
     "postgres:protect:insert": "tsx src/protect/insert.ts",
-    "postgres:protect:proxy-encrypt-config": "tsx src/protect/protect/proxy-encrypt-config.ts",
     "postgres:protect:search": "tsx src/protect/search.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc --noEmit"
