@@ -4,10 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@cipherstash/protect': link:../protectjs/packages/protect
-  '@cipherstash/schema': link:../protectjs/packages/schema
-
 importers:
 
   .:
@@ -19,14 +15,14 @@ importers:
         specifier: ^3.896.0
         version: 3.896.0(@aws-sdk/client-dynamodb@3.896.0)
       '@cipherstash/protect':
-        specifier: link:../protectjs/packages/protect
-        version: link:../protectjs/packages/protect
+        specifier: github:cipherstash/protectjs?path=packages/protect#searchable-json-query-api
+        version: '@cipherstash/protectjs@https://codeload.github.com/cipherstash/protectjs/tar.gz/b65022d126dc81f5613d1304bac5232703a77b43'
       '@cipherstash/protect-dynamodb':
         specifier: ^4.0.0
-        version: 4.0.0(@cipherstash/protect@protectjs+packages+protect)
+        version: 4.0.0(@cipherstash/protectjs@https://codeload.github.com/cipherstash/protectjs/tar.gz/b65022d126dc81f5613d1304bac5232703a77b43)
       '@cipherstash/schema':
-        specifier: link:../protectjs/packages/schema
-        version: link:../protectjs/packages/schema
+        specifier: ^0.1.0
+        version: 0.1.0
       dotenv:
         specifier: ^17.2.2
         version: 17.2.2
@@ -193,8 +189,17 @@ packages:
 
   '@cipherstash/protect-dynamodb@4.0.0':
     resolution: {integrity: sha512-qRZWmW/G+21rUqda+Ja4X/UQjFRncn+zent4mnOj1GrXoLGVKrncQ4Wcsuk37ovIb0xb020JieuscXX6vvOs3Q==}
+    version: 4.0.0
     peerDependencies:
       '@cipherstash/protect': 9.6.0
+
+  '@cipherstash/protectjs@https://codeload.github.com/cipherstash/protectjs/tar.gz/b65022d126dc81f5613d1304bac5232703a77b43':
+    resolution: {tarball: https://codeload.github.com/cipherstash/protectjs/tar.gz/b65022d126dc81f5613d1304bac5232703a77b43}
+    version: 0.0.0
+    engines: {node: '>=22'}
+
+  '@cipherstash/schema@0.1.0':
+    resolution: {integrity: sha512-PrgnK3cfhfJK6pA0giJ6Xawi3xzGeMpyCNhUuGROspIuQp94HczILCXjLLell5rg8PDq8swnRFI4+WIZQOgXBA==}
 
   '@drizzle-team/brocli@0.10.2':
     resolution: {integrity: sha512-z33Il7l5dKjUgGULTqBsQBQwckHh5AbIuxhdsIxDDiZAzBOrZO6q9ogcWC65kU382AfynTfgNumVcNIjuIua6w==}
@@ -915,6 +920,9 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
 snapshots:
 
   '@aws-crypto/sha256-browser@5.2.0':
@@ -1305,10 +1313,16 @@ snapshots:
 
   '@byteslice/result@0.2.2': {}
 
-  '@cipherstash/protect-dynamodb@4.0.0(@cipherstash/protect@protectjs+packages+protect)':
+  '@cipherstash/protect-dynamodb@4.0.0(@cipherstash/protectjs@https://codeload.github.com/cipherstash/protectjs/tar.gz/b65022d126dc81f5613d1304bac5232703a77b43)':
     dependencies:
       '@byteslice/result': 0.2.2
-      '@cipherstash/protect': link:../protectjs/packages/protect
+      '@cipherstash/protect': '@cipherstash/protectjs@https://codeload.github.com/cipherstash/protectjs/tar.gz/b65022d126dc81f5613d1304bac5232703a77b43'
+
+  '@cipherstash/protectjs@https://codeload.github.com/cipherstash/protectjs/tar.gz/b65022d126dc81f5613d1304bac5232703a77b43': {}
+
+  '@cipherstash/schema@0.1.0':
+    dependencies:
+      zod: 3.25.76
 
   '@drizzle-team/brocli@0.10.2': {}
 
@@ -1932,3 +1946,5 @@ snapshots:
   undici-types@7.12.0: {}
 
   xtend@4.0.2: {}
+
+  zod@3.25.76: {}
