@@ -7,6 +7,10 @@ export const users = csTable('users', {
   encrypted_jsonb: csColumn('encrypted_jsonb').equality(),
 })
 
+export const jsonUsers = csTable('json_users', {
+  encrypted_metadata: csColumn('encrypted_metadata').searchableJson(),
+})
+
 export const protectClient = await protect({
-  schemas: [users],
+  schemas: [users, jsonUsers],
 })

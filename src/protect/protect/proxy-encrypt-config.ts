@@ -4,6 +4,11 @@ import { users } from './index'
 import { Client } from 'pg'
 
 const encryptConfig = buildEncryptConfig(users)
+// After line 6, add:
+const fixedConfig = JSON.parse(
+  JSON.stringify(encryptConfig).replace(/"cast_as":\s*"string"/g, '"cast_as": "text"')
+);
+
 
 async function connectToCipherStash() {
   // Connection configuration for CipherStash proxy
@@ -38,7 +43,7 @@ async function connectToCipherStash() {
       `
         INSERT INTO eql_v2_configuration (state, data) VALUES ('active', $1)
       `,
-      [encryptConfig],
+      [fixedConfig],
     )
     console.log('Updated eql_v2_configuration')
   } catch (error) {

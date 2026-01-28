@@ -62,3 +62,8 @@ export const usersTable = pgTable('users', {
   encrypted_salary: encrypted('encrypted_salary'),
   encrypted_jsonb: encrypted('encrypted_jsonb'),
 })
+
+export const jsonUsersTable = pgTable('json_users', {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  encrypted_metadata: encrypted('encrypted_metadata'),
+})

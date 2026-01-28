@@ -4,6 +4,10 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@cipherstash/protect': link:../protectjs/packages/protect
+  '@cipherstash/schema': link:../protectjs/packages/schema
+
 importers:
 
   .:
@@ -15,14 +19,14 @@ importers:
         specifier: ^3.896.0
         version: 3.896.0(@aws-sdk/client-dynamodb@3.896.0)
       '@cipherstash/protect':
-        specifier: ^9.6.0
-        version: 9.6.0
+        specifier: link:../protectjs/packages/protect
+        version: link:../protectjs/packages/protect
       '@cipherstash/protect-dynamodb':
         specifier: ^4.0.0
-        version: 4.0.0(@cipherstash/protect@9.6.0)
+        version: 4.0.0(@cipherstash/protect@protectjs+packages+protect)
       '@cipherstash/schema':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: link:../protectjs/packages/schema
+        version: link:../protectjs/packages/schema
       dotenv:
         specifier: ^17.2.2
         version: 17.2.2
@@ -191,40 +195,6 @@ packages:
     resolution: {integrity: sha512-qRZWmW/G+21rUqda+Ja4X/UQjFRncn+zent4mnOj1GrXoLGVKrncQ4Wcsuk37ovIb0xb020JieuscXX6vvOs3Q==}
     peerDependencies:
       '@cipherstash/protect': 9.6.0
-
-  '@cipherstash/protect-ffi-darwin-arm64@0.16.0':
-    resolution: {integrity: sha512-RXxhgGemIbFMPH9NcpIncI9uICwEwJxsYekIaZ/DEsT9wUTGmPVkAyscGlellHx5xUkDtrvxIQY086GlcNON8w==}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@cipherstash/protect-ffi-darwin-x64@0.16.0':
-    resolution: {integrity: sha512-H5LG2mzeQ6Fy3sPqBw1D/IZ5QVe+pZNYRR1u2wiSc6UR7fdlRZPzYNPWcTuHDJvI4vEY3DZjYCUaNNeeGtX0IA==}
-    cpu: [x64]
-    os: [darwin]
-
-  '@cipherstash/protect-ffi-linux-arm64-gnu@0.16.0':
-    resolution: {integrity: sha512-iHsdJKX6IAe8EoPMdH/zQycH8WXNC7IKoYVI6CdvelJjhScIMfKxeuQolDgEYSQe5ujLfCA6Ujk0bqyKPwiS7Q==}
-    cpu: [arm64]
-    os: [linux]
-
-  '@cipherstash/protect-ffi-linux-x64-gnu@0.16.0':
-    resolution: {integrity: sha512-desQSbnHAB8i8GfQ/kYMojX92McVsejnCf2uCfW9ilkJ+HVtFVfrYp1R2Y2zCtQtvdfuYel07UiFpogIWGp/2Q==}
-    cpu: [x64]
-    os: [linux]
-
-  '@cipherstash/protect-ffi-win32-x64-msvc@0.16.0':
-    resolution: {integrity: sha512-9aZAepWdPUnBeNM8tWL7D0VCqrylwySZbw0qChVDzEfDMrxOnIjrTht54kI14FVKfRHWugm7FFbzjjfLwS4M5A==}
-    cpu: [x64]
-    os: [win32]
-
-  '@cipherstash/protect-ffi@0.16.0':
-    resolution: {integrity: sha512-sG5yo0Q277oQGXHd4T4hA9Jdf19AI+0sLzEOvcjjvb/T9AZplsUZJd1ZU0oQUzSrJ4JGzOahyQ6CeMrYvdmdeg==}
-
-  '@cipherstash/protect@9.6.0':
-    resolution: {integrity: sha512-xZSmJWgTuZmuAwQ9Wqa/l0DXzvCdfZRmvMllmjYfrSbIJ6NMhGIDcVOrazZHJ1QwjRxc+L2VmSvbJXQx4VReqQ==}
-
-  '@cipherstash/schema@0.1.0':
-    resolution: {integrity: sha512-PrgnK3cfhfJK6pA0giJ6Xawi3xzGeMpyCNhUuGROspIuQp94HczILCXjLLell5rg8PDq8swnRFI4+WIZQOgXBA==}
 
   '@drizzle-team/brocli@0.10.2':
     resolution: {integrity: sha512-z33Il7l5dKjUgGULTqBsQBQwckHh5AbIuxhdsIxDDiZAzBOrZO6q9ogcWC65kU382AfynTfgNumVcNIjuIua6w==}
@@ -524,14 +494,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@neon-rs/load@0.1.82':
-    resolution: {integrity: sha512-H4Gu2o5kPp+JOEhRrOQCnJnf7X6sv9FBLttM/wSbb4efsgFWeHzfU/ItZ01E5qqEk+U6QGdeVO7lxXIAtYHr5A==}
-
-  '@rollup/rollup-linux-x64-gnu@4.24.0':
-    resolution: {integrity: sha512-ZXFk7M72R0YYFN5q13niV0B7G8/5dcQ9JDp8keJSfr3GoZeXEoMHP/HlvqROA3OMbMdfr19IjCeNAnPUG93b6A==}
-    cpu: [x64]
-    os: [linux]
 
   '@smithy/abort-controller@4.1.1':
     resolution: {integrity: sha512-vkzula+IwRvPR6oKQhMYioM3A/oX/lFCZiwuxkQbRhqJS2S4YRY2k7k/SyR2jMf3607HLtbEwlRxi0ndXHMjRg==}
@@ -953,9 +915,6 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
-  zod@3.25.76:
-    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
-
 snapshots:
 
   '@aws-crypto/sha256-browser@5.2.0':
@@ -1346,48 +1305,10 @@ snapshots:
 
   '@byteslice/result@0.2.2': {}
 
-  '@cipherstash/protect-dynamodb@4.0.0(@cipherstash/protect@9.6.0)':
+  '@cipherstash/protect-dynamodb@4.0.0(@cipherstash/protect@protectjs+packages+protect)':
     dependencies:
       '@byteslice/result': 0.2.2
-      '@cipherstash/protect': 9.6.0
-
-  '@cipherstash/protect-ffi-darwin-arm64@0.16.0':
-    optional: true
-
-  '@cipherstash/protect-ffi-darwin-x64@0.16.0':
-    optional: true
-
-  '@cipherstash/protect-ffi-linux-arm64-gnu@0.16.0':
-    optional: true
-
-  '@cipherstash/protect-ffi-linux-x64-gnu@0.16.0':
-    optional: true
-
-  '@cipherstash/protect-ffi-win32-x64-msvc@0.16.0':
-    optional: true
-
-  '@cipherstash/protect-ffi@0.16.0':
-    dependencies:
-      '@neon-rs/load': 0.1.82
-    optionalDependencies:
-      '@cipherstash/protect-ffi-darwin-arm64': 0.16.0
-      '@cipherstash/protect-ffi-darwin-x64': 0.16.0
-      '@cipherstash/protect-ffi-linux-arm64-gnu': 0.16.0
-      '@cipherstash/protect-ffi-linux-x64-gnu': 0.16.0
-      '@cipherstash/protect-ffi-win32-x64-msvc': 0.16.0
-
-  '@cipherstash/protect@9.6.0':
-    dependencies:
-      '@byteslice/result': 0.2.2
-      '@cipherstash/protect-ffi': 0.16.0
-      '@cipherstash/schema': 0.1.0
-      zod: 3.25.76
-    optionalDependencies:
-      '@rollup/rollup-linux-x64-gnu': 4.24.0
-
-  '@cipherstash/schema@0.1.0':
-    dependencies:
-      zod: 3.25.76
+      '@cipherstash/protect': link:../protectjs/packages/protect
 
   '@drizzle-team/brocli@0.10.2': {}
 
@@ -1543,11 +1464,6 @@ snapshots:
     optional: true
 
   '@esbuild/win32-x64@0.25.10':
-    optional: true
-
-  '@neon-rs/load@0.1.82': {}
-
-  '@rollup/rollup-linux-x64-gnu@4.24.0':
     optional: true
 
   '@smithy/abort-controller@4.1.1':
@@ -2016,5 +1932,3 @@ snapshots:
   undici-types@7.12.0: {}
 
   xtend@4.0.2: {}
-
-  zod@3.25.76: {}
