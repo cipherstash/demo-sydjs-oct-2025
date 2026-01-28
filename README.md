@@ -188,9 +188,9 @@ pnpm run postgres:protect:insert
 - Stores encrypted values in dedicated columns (`encrypted_email`, `encrypted_dob`, `encrypted_salary`)
 - Works with Drizzle ORM for type-safe queries
 
-#### Query All Users
+#### List All Users
 ```bash
-pnpm run postgres:protect:query
+pnpm run postgres:protect:list-users
 ```
 **What it demonstrates:**
 - Retrieves encrypted data from PostgreSQL
